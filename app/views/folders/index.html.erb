@@ -1,0 +1,31 @@
+<div class='headers'>
+	<h1>Document Folders</h1>
+</div>
+
+<table>
+	<tr>
+		<th class='left'>Folder</th>
+		<th class='left'>Documents</th>
+		<th class='left'>Private</th>
+		<th class='left'>Stage</th>
+		<th class='left'>Investor ID</th>
+		<th class='left'>User ID</th>
+		<th class='left'></th>
+		<th class='left'></th>
+	</tr>
+	<% @folders.each do |folder| %>
+	<tr class='<%= cycle('odd','even')%>'>
+		<td class='left'><%= link_to folder.name, folder %></td>
+		<td class='left'><%=  %></td>
+		<td class='left'><%= folder.private? ? 'Yes' : 'No' %></td>
+		<td class='left'><%= folder.stage %></td>
+		<td class='left'><%= folder.investor_id %></td>
+		<td class='left'><%= folder.user_id %></td>
+		<td class='left'><%= link_to 'Edit', edit_folder_path(folder) %></td>
+		<td class='left'><%= link_to 'Destory', folder, :confirm => "Are you sure?", :method => :delete %></td>
+	</tr>
+	<% end %>
+</table>
+
+<br />
+<%= link_to 'Add Folder', new_folder_path %>

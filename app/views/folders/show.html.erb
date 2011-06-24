@@ -1,0 +1,29 @@
+<div class='headers'>
+	<h1><%= @folder.name %></h1>
+</div>
+
+<table>
+	<tr>
+		<th class='left'>Name</th>
+		<th class='left'>File</th>
+		<th class='left'>User ID</th>
+		<th class='left'>Private</th>
+		<th class='left'>Stage</th>
+	</tr>
+	<% @documents.each do |document| %>
+	<tr class='<%= cycle('odd','even') %>'>
+		<td class='left'><%= link_to document.name, folder_document_path(@folder, document) %></td>
+		<td class='left'><%= document.attachment %></td>
+		<td class='left'><%= document.user_id %></td>
+		<td class='left'><%= document.private? ? 'Yes' : 'No' %></td>
+		<td class='left'><%= document.stage %></td>
+	</tr>
+	<% end %>
+</table>
+
+<br />
+<%= link_to 'Add Document', new_folder_document_path(@folder) %>
+
+<div class='back_footer'>
+	<%= link_to 'Back to Folders', folders_path %>
+</div>

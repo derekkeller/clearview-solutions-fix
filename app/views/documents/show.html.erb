@@ -1,0 +1,33 @@
+<h2><%= @document.name %></h2>
+
+<table>
+	<tr>
+		<th>Description</th>
+		<td><%= @document.description %></td>
+	</tr>
+	<tr>
+		<th>File</th>
+		<td><%= @document.attachment %></td>
+	</tr>
+	<tr>
+		<th>User ID</th>
+		<td><%= @document.user_id %></td>
+	</tr>
+	<tr>
+		<th>Private</th>
+		<td><%= @document.private? ? 'Yes' : 'No' %></td>
+	</tr>
+	<tr>
+		<th>Stage</th>
+		<td><%= @document.stage %></td>
+	</tr>
+	<tr>
+		<th><%= link_to 'Download',  download_attachment_document_path(@document) %></th>
+		<td></td>
+	</tr>
+</table>
+
+<br />
+<%= link_to 'Edit', edit_folder_document_path(@folder, @document) %> |
+<%= link_to 'Destroy', @document, :confirm => "Are you sure?", :method => :delete %><br />
+<%= link_to "Back to #{@folder.name.downcase} documents", @folder %>

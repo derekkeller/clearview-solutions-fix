@@ -1,0 +1,130 @@
+body {
+	padding: 0;
+	margin: 0;
+	background: #000 url(../images/nyc.jpg) no-repeat center top;
+	width: 100%;
+	display: table;
+	font-family: tahoma, geneva, sans-serif;
+	font-size: 13px;
+}
+
+.logo_container {
+	width: 800px;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	color: #FFF;
+}
+
+.logo_container #logo {
+	text-align: center;
+}
+
+.logo_container #investor_container {
+	float: right;
+}
+
+
+.logo_container #investor_container #investor_login a:link, .logo_container #investor_login a:visited {
+	color: #FFF;
+	text-decoration: none;
+	position: absolute;
+	right: -20px;
+	width: 132px;
+	height: 32px;
+	font-size: 12px;
+	text-align: center;
+	line-height: 38px;
+	background: url(../images/investor_login.png) no-repeat;
+	position: block;
+}
+
+.logo_container #investor_container #investor_login a:hover {
+	background: url(../images/investor_login_over.png) no-repeat;
+	color: #FFF;
+}
+
+.main_body_container {
+	margin-top: 300px;
+  background: url(../images/body.png) repeat-x;
+	width: 100%;
+}
+
+.main_body {
+	height: 130px;
+	width: 800px;
+	color: #FFF;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	line-height: 25px;
+	font-size: 14px;
+}
+
+.main_menu_container {
+	width: 100%;
+	height: 40px;
+/*	padding-top: 15px;*/
+	background: #FFF;
+  background: url(../images/menu.png) repeat-x;
+}
+
+.main_menu {
+	width: 800px;
+	color: #FFF;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+.main_menu #menu {
+	line-height: 40px;
+	float: left;
+}
+
+.main_menu a {
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+	margin-right: 20px;
+}
+
+.main_menu a:hover {
+	color: #D27119;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.main_menu a:visited {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.main_menu .current {
+	color: #D27119;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
+
+.footer_container {
+	width: 100%;
+	margin-top: 50px;
+	float: left;
+}
+
+.footer_container #footer {
+	height: 10px;
+	color: #FFF;
+	font-size: 11px;
+	text-align: left;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}

@@ -1,0 +1,25 @@
+App Changes / Additions
+
+1. action items
+  - build out a view for action items
+  - sortable by investor, date created, due date, and user assigned
+  - attach to an event (but probably not create "inside" an event)
+
+2. investor stage
+  - build stage 1..4
+  - assign investors to stage on creation, and editable throughout
+
+3. folder/doc structure
+  - restrict and grant access of docs based on "investor stage/status"
+  - build customized folder options per lp
+  - customized document creation, based on lps assigned (not stages)
+
+4. email notification
+  - notify after action item creation
+
+
+General
+  - amazon security
+  - hiding url and restricting access to docs to those logged in
+  - download doc on click
+  

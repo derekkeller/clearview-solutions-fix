@@ -1,0 +1,21 @@
+<%= form_for @folder do |f| %>
+	<p>
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :stage %><br />
+		<%= f.select :stage, {'1:Potential' => 1, '2:Engaged' => 2, '3:Term Sheet' => 3, '4:Closed' => 4}, :include_blank => true %>
+	</p>
+	<p>
+		<%= f.label :private %><br />
+		<%= f.select :private, {'Yes' => 1, 'No' => 0} %>
+	</p>
+	<p>
+		<%= f.label :investor_id, "Investor (if private)" %><br />
+		<%= f.select :investor_id, (Investor.all.collect {|i| [i.name, i.id]}), :include_blank => true %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

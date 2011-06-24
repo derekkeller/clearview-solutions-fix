@@ -1,0 +1,28 @@
+<div class='headers'>
+	<h1>All Users</h1>
+</div>
+
+<table>
+	<tr class='header_row'>
+		<th class='left'>Name</th>
+		<th class='left'>User Type</th>
+		<th class='left'>Email</th>
+		<th class='left'>Phone</th>
+		<th class='left'>Notes</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @users.each do |user| %>
+	<tr class='<%= cycle('odd','even') %>'>
+		<td class='left'><%= [user.first_name, user.last_name].join(" ") %></td>
+		<td class='left'><%= user.user_type %></td>
+		<td class='left'><%= user.email %></td>
+		<td class='left'><%= user.phone %></td>
+		<td class='left'><%= user.notes %></td>
+		<% if current_user.id == user.id %>
+			<td class='left'><%= link_to 'Edit', edit_user_registration_path(user) %></td>
+			<td class='left'><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>

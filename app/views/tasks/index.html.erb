@@ -1,0 +1,31 @@
+<div class='headers'>
+	<h1>All Tasks</h1>
+</div>
+
+	<table>
+		<tr class='header_row'>
+			<th class='left'>Investor</th>
+			<th class='left'>Name</th>
+			<th class='left'>Description</th>
+			<th class='left'>Due Date</th>
+			<th class='left'>Assigned By</th>
+			<th class='left'>Assigned To</th>
+			<th class='left'>Completed</th>
+			<th class='left'>Completed Date</th>
+			<th class='left'>Event ID</th>
+
+		</tr>
+		<% @tasks.each do |task| %>
+		<tr class='<%= cycle('odd','even') %>'>
+			<td class='left'><%= task.investor.name %></td>
+			<td class='left'><%= task.name %></td>
+			<td class='left'><%= truncate(task.description, :length => 30, :omission => "...") %></td>
+			<td class='left'><%= task.due_date %></td>
+			<td class='left'><%= task.user.first_name %></td>
+			<td class='left'><%= task.user_id %></td>
+			<td class='left'><%= task.completed? ? 'Yes' : 'No' %></td>
+			<td class='left'><%= task.completed_date %></td>
+			<td class='left'><%= task.event_id %></td>
+		</tr>
+		<% end %>
+	</table>

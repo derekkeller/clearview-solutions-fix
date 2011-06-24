@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clearview Solutions | Professional Investors</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+	<% if user_signed_in? %>
+
+		<div id="investor_holder">
+			<div id="investor_menu">
+				<ul>
+					<li>Welcome <%= link_to current_user.first_name, edit_user_registration_path %>!</li>
+					<li><%= link_to "Investors", investors_path %></li>
+					<li><%= link_to "Events", events_path %></li>
+					<li><%= link_to "Users", users_path %></li>
+					<li><%= link_to "Documents", folders_path %></li>
+					<li><%= link_to 'Logout', destroy_user_session_path %></li>
+				</ul>
+			</div>
+		</div>
+
+	<% else %>
+
+		<div class='logo_container'>
+			<div id="logo"><a href="index.html"><img src="images/logo.png" border="0"></a>
+				<div id="investor_container">
+					<div id="investor_login">
+						<%= link_to 'Investor Login', new_user_session_path %>
+					</div>
+				</div>	
+			</div>
+		</div>
+
+	<% end %>
+
+<div class="main_body_container">
+	<div class="main_body">
+	 	<div id="alert"><%= alert %></div>
+	 	<div id="notice"><%= notice %></div>	
+		<%= yield %>
+	</div>
+</div>
+
+<div class="main_menu_container">
+	<div class="main_menu">
+		<div id="menu">
+			<%= link_to 'ABOUT', :index, :class => "#{@index_class}" %>
+			<%= link_to 'WORK', :work, :class => "#{@work_class}" %>
+			<%= link_to 'CONTACT', :contact, :class => "#{@contact_class}" %>
+		</div>
+</div>
+
+<div class="footer_container">
+	<div id="footer">Clearview Solutions, LLC  |  &copy; <%= Time.now.year %></div>
+</div>
+
+</body>
+</html>

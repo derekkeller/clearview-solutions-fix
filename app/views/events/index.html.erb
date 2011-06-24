@@ -1,0 +1,28 @@
+<div class='headers'>
+	<h1>All Events</h1>
+</div>
+
+	<table>
+		<tr class='header_row'>
+			<th class='left'>Date</th>
+			<th class='left'>Name</th>
+			<th class='left'>Type</th>
+			<th class='left'>Notes</th>
+			<th class='left'>Investor ID</th>
+			<th class='left'>Created By</th>
+			<th class='left'></th>
+			<th class='left'></th>			
+		</tr>
+		<% @events.each do |event| %>
+		<tr class='<%= cycle('odd','even') %>'>
+			<td class='left'><%= event.date %></td>
+			<td class='left'><%= link_to event.name, event_path(event) %></td>
+			<td class='left'><%= event.event_type.humanize %></td>
+			<td class='left'><%= event.notes %></td>
+			<td class='left'></td>
+			<td class='left'><%= event.user.first_name %></td>
+			<td class='left'><%= link_to 'Edit', edit_investor_event_path(event.investor, event, :refer_id => 'event_index') %></td>
+			<td class='left'><%= link_to 'Destroy', event, :confirm => "Are you sure?", :method => :delete %></td>						
+		</tr>
+		<% end %>
+	</table>
