@@ -2,5 +2,5 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(function (){  
-    $('#event_date').datepicker();  
+    $('#event_date').datepicker({ dateFormat: 'yy-mm-dd' });
 });
