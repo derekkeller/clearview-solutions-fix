@@ -113,7 +113,7 @@
 			<th></th>
 		</tr>
 		<% @tasks.each do |task| %>
-		<tr class="<%= cycle('odd','even') %>">
+		<tr class="<%= cycle('odd','even') %>" id="tasks_<%= task.id.to_s %>">
 			<td class='left'><%= link_to task.name, investor_task_path(@investor, task) %></td>
 			<td class='left'><%= truncate(task.description, :length => 25, :omission => "...") %></td>
 			<td class='left'><%= task.due_date %></td>
@@ -124,7 +124,9 @@
 			<td class='left'><%= task.event_id %></td>
 			<td class='left'><%= task.investor.name %></td>
 			<td class='left'><%= link_to 'Edit', edit_investor_task_path(@investor, task) %></td>
-			<td class='left'><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
+			<td class='left'>
+				<%= link_to_function 'Destroy', "destroy_it_now('tasks', #{task.id.to_s})" %>
+			</td>
 		</tr>
 		<% end %>
 	</table>
@@ -147,7 +149,7 @@
 			<th></th>			
 		</tr>
 		<% @investor.events.each do |event| %>
-		<tr class='<%= cycle('odd','even') %>'>
+		<tr class='<%= cycle('odd','even') %>'  id="events_<%= event.id.to_s %>">
 			<td class='left'><%= event.date %></td>
 			<td class='left'><%= link_to event.name, investor_event_path(@investor, event) %></td>
 			<td class='left'><%= event.event_type %></td>
@@ -155,7 +157,9 @@
 			<td class='left'><%= event.investor.name %></td>
 			<td class='left'><%= event.user.first_name %></td>
 			<td class='left'><%= link_to 'Edit', edit_investor_event_path(@investor, event) %></td>
-			<td class='left'><%= link_to 'Destroy', investor_event_path(@investor, event), :confirm => "Are you sure?", :method => :delete %></td>
+			<td class='left'>
+				<%= link_to_function 'Destroy', "destroy_it_now('events', #{event.id.to_s})" %>
+			</td>
 		</tr>
 		<% end %>
 	</table>
@@ -167,8 +171,9 @@
 	<%= link_to "< Back", investors_path %>
 </div>
 
-<!-- <script type="text/javascript" charset="utf-8">
-	function destroy_it_now(model_name, item_id){
-		$.post('/' + model_name + '/' + item_id) {method : 'delete'}
+<script type="text/javascript" charset="utf-8">
+	function destroy_it_now(model_name, item_id) {
+		$('#' + model_name + '_' + item_id).hide();
+		$.post('/' + model_name + '/' + item_id, {_method : 'delete', authenticity_token : '<%= form_authenticity_token %>'});
 	}	
-</script> -->
+</script>
