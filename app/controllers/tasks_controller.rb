@@ -46,9 +46,11 @@ class TasksController < ApplicationController
     
   def destroy
     @task = Task.find(params[:id])
-    @investor = @task.investor_id
     @task.destroy
-    redirect_to investor_path(@investor)
+    
+    render :update do |page|
+      #page << "#task_#{@task.id.to_s}"
+    end
   end
 
 end

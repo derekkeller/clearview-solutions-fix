@@ -57,9 +57,11 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    @investor = @event.investor
     @event.destroy
-    redirect_to @investor
+    
+    render :update do |page|
+      #page << 'done'
+    end
   end
   
 end
