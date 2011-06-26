@@ -19,7 +19,7 @@
 			<th class='left'>Investors Present</th>
 			<td class='left'>
 				<ul>
-					<% @event.attendees.each do |attendee| %>
+					<% @event.attendees.investors.each do |attendee| %>
 						<li><%= attendee.first_name %></li>
 					<% end %>
 				</ul>
@@ -29,15 +29,15 @@
 			<th class='left'>H12 Team Present</th>
 			<td class='left'>
 				<ul>
-					<%  %>
-						<li><%=  %></li>
-					<%  %>
+					<% @event.attendees.employees.each do |attendee| %>
+						<li><%= attendee.first_name %></li>
+					<% end %>
 				</ul>
 			</td>
 		</tr>
 		<tr>
 			<th class='left'>User ID</th>
-			<td class='left'><%= @event.user_id %></td>
+			<td class='left'><%= @event.user %></td>
 		</tr>
 	</table>
 

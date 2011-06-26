@@ -5,7 +5,6 @@ class Event < ActiveRecord::Base
 
   has_many :participants
   has_many :attendees, :through => :participants, :source => :user
-  # has_many :users, :through => :participants
 
   accepts_nested_attributes_for :participants
 

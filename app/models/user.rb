@@ -4,6 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+  scope :investors, where('investor_id IS NOT NULL')
+  scope :employees, where('investor_id IS NULL')
+  
+  # if the assignments were all there this would work
+  #scope :investors, joins(:assignments).where('assignments.role_id = 3')
+  #scope :employees, joins(:assignments).where('assignments.role_id in (1,2)')
+  
   def has_role(role)
     self.roles.find_by_name(role)
   end
@@ -30,5 +37,9 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :assignments
 
   accepts_nested_attributes_for :participants
+  
+  def to_s
+    [first_name, last_name].join(' ')
+  end
 
 end
