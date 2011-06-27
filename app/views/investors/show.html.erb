@@ -125,7 +125,7 @@
 			<td class='left'><%= task.investor.name %></td>
 			<td class='left'><%= link_to 'Edit', edit_investor_task_path(@investor, task) %></td>
 			<td class='left'>
-				<%= link_to_function 'Destroy', "destroy_it_now('tasks', #{task.id.to_s})" %>
+				<%= link_to 'Destroy', "#", :onclick => 'return false;', :class => 'destroy', 'data-model' => 'tasks', 'data-id' => task.id.to_s  %>
 			</td>
 		</tr>
 		<% end %>
@@ -158,7 +158,7 @@
 			<td class='left'><%= event.user.first_name %></td>
 			<td class='left'><%= link_to 'Edit', edit_investor_event_path(@investor, event) %></td>
 			<td class='left'>
-				<%= link_to_function 'Destroy', "destroy_it_now('events', #{event.id.to_s})" %>
+				<%= link_to 'Destroy', "#", :onclick => 'return false;', :class => 'destroy', 'data-model' => 'events', 'data-id' => event.id.to_s  %>
 			</td>
 		</tr>
 		<% end %>
@@ -170,15 +170,3 @@
 <div class='back_footer'>
 	<%= link_to "< Back", investors_path %>
 </div>
-
-<script type="text/javascript" charset="utf-8">
-	function destroy_it_now(model_name, item_id) {
-		var answer = confirm('Are you sure you want to delete this?');
-	  if (answer) {
-			$('#' + model_name + '_' + item_id).hide();
-			$.post('/' + model_name + '/' + item_id, {_method : 'delete', authenticity_token : '<%= form_authenticity_token %>'});
-		} else {
-			return false
-		}
-	}	
-</script>
